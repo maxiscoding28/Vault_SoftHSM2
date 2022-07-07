@@ -30,7 +30,7 @@ $ chmod +x setup.sh
 $ ./setup.sh
 ```
 ## Post install
-Vault will be in a lsijdflskjdflskdjf
+Vault Recovery keys and root token will be available in `~/unseal.keys`
 
 # Useful commands
 
