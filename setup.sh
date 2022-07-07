@@ -49,7 +49,7 @@ install_and_config() {
 
     # Gather the new slot number and place this in VAULT_HSM_SLOT
     echo_green "Reading and saving the slot number to VAULT_HSM_SLOT"
-    echo "VAULT_HSM_SLOT=$(sudo softhsm2-util --show-slots | grep "^Slot " | head -1 | cut -d " " -f 2)"
+    echo "VAULT_HSM_SLOT=\$(sudo softhsm2-util --show-slots | grep \"^Slot \" | head -1 | cut -d \" \" -f 2)"
     VAULT_HSM_SLOT=$(sudo softhsm2-util --show-slots | grep "^Slot " | head -1 | cut -d " " -f 2)
 
     # Setting VAULT_ADDR env variable
@@ -104,6 +104,7 @@ EOF
     if [ "${STATUS}" = "active" ]; then
         echo_green "Vault is running, let's initialize....."
         echo_green "Initializing Vault and exporting keys to `echo ~`/unseal.keys - NEVER do this in production"
+        echo "vault operator init -recovery-shares=1 -recovery-threshold=1 >> ~/unseal.keys"
         vault operator init -recovery-shares=1 -recovery-threshold=1 >> ~/unseal.keys
         cat ~/unseal.keys
         vault status
