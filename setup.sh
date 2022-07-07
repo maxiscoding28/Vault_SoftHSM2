@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 # This script will install and configure a single HashiCorp Vault (Enterprise+HSM) instance as well as the SoftHSM package.
 
@@ -53,7 +53,7 @@ install_and_config() {
 
     # Add Vault license
     echo_green "Adding license ..."
-    sudo cp ~/vault.hclic /etc/vault.d/vault.hclic
+    sudo cp `pwd`/vault.hclic /etc/vault.d/vault.hclic
     echo "VAULT_LICENSE_PATH=/etc/vault.d/vault.hclic" | sudo tee -a /etc/vault.d/vault.env
 
     # Setup Vault config for HSM etc...
