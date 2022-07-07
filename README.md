@@ -18,8 +18,8 @@ Please do not use this for production employments. This is for lab/testing/demon
 # Usage
 ## Clone the project
 ```
-$ git clone https://github.com/kwagga/vault_softhsm2
-$ cd vault_softhsm2
+$ git clone https://github.com/kwagga/Vault_SoftHSM2.git
+$ cd Vault_SoftHSM2
 ```
 ## Insert Enterprise license
 - Populate `vault.hclic` with your license.
