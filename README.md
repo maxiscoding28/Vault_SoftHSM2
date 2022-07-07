@@ -12,11 +12,10 @@ Please do not use this for production employments. This is for lab/testing/demon
 # Prerequisites
 - An x86_64 Ubuntu VM (VirtualBox, AWS, gcloud, etc) - Testing was done on Jammy Jellyfish
 - Bash shell
-- `setup.sh` 
 - [Vault Enterprise License](https://www.vaultproject.io/docs/enterprise/license) (HSM support is only available for Vault Enterprise)
 
 # Usage
-## Clone the project
+## Clone the repo
 ```
 $ git clone https://github.com/kwagga/Vault_SoftHSM2.git
 $ cd Vault_SoftHSM2
