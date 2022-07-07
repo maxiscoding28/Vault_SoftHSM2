@@ -24,30 +24,37 @@ install_and_config() {
 
     # Add vault user to softhsm group
     echo_green "Adding vault user to softhsm group"
+    echo "sudo adduser vault softhsm"
     sudo adduser vault softhsm
 
     # Let's show the SoftHSM slots
     echo_green "Listing SoftHSM slots (pre-config)"
+    echo "sudo softhsm2-util --show-slots"
     sudo softhsm2-util --show-slots
 
     # Need to configure a new slot for Vault
     echo_green "Configuring a new slot for Vault"
+    echo "sudo -u vault softhsm2-util --init-token --slot 0 --label "vault_hsm_key" --pin 1234 --so-pin asdf"
     sudo -u vault softhsm2-util --init-token --slot 0 --label "vault_hsm_key" --pin 1234 --so-pin asdf
 
     # Show new slot
     echo_green "Listing SoftHSM slots (post-config) using softhsm2-util"
+    echo "sudo softhsm2-util --show-slots"
     sudo softhsm2-util --show-slots
 
     # Show new slot using pkcs#11
     echo_green "Listing SoftHSM slots (post-config) using pkcs#11"
+    echo "sudo pkcs11-tool --module /usr/lib/softhsm/libsofthsm2.so -L"
     sudo pkcs11-tool --module /usr/lib/softhsm/libsofthsm2.so -L
 
     # Gather the new slot number and place this in VAULT_HSM_SLOT
     echo_green "Reading and saving the slot number to VAULT_HSM_SLOT"
+    echo "VAULT_HSM_SLOT=$(sudo softhsm2-util --show-slots | grep "^Slot " | head -1 | cut -d " " -f 2)"
     VAULT_HSM_SLOT=$(sudo softhsm2-util --show-slots | grep "^Slot " | head -1 | cut -d " " -f 2)
 
     # Setting VAULT_ADDR env variable
     echo_green "Setting VAULT_ADDR environment variable ..."
+    echo "export VAULT_ADDR=\"http://127.0.0.1:8200\""
     echo export VAULT_ADDR="http://127.0.0.1:8200" >> ~/.profile
     export VAULT_ADDR="http://127.0.0.1:8200"
 
