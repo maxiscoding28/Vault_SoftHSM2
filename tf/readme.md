@@ -3,7 +3,7 @@
 ## Usage
 - Create a `terraform.tfvars` file and specify your key name and region
 ```
-ami_key_pair_name = "janprinsloo"
+ami_key_pair_name = "savanaotter"
 region_name = "us-central-1"
 ```
 - `terraform init`
