@@ -4,11 +4,7 @@ variable "ami_id" {
 }
 
 variable "ami_key_pair_name" {
-  type    = string
-  default = ""
 }
 
 variable "region_name" {
-    type = string
-    default = "eu-central-1"
 }
