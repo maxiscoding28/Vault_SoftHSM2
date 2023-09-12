@@ -17,16 +17,16 @@ Please do not use this for production employments. This is for lab/testing/demon
 # Usage
 ## Clone the repo
 ```
-$ git clone https://github.com/kwagga/Vault_SoftHSM2.git
-$ cd Vault_SoftHSM2
+git clone https://github.com/kwagga/Vault_SoftHSM2.git
+cd Vault_SoftHSM2
 ```
 ## Insert Enterprise license
 - Populate `vault.hclic` with your license.
 
 ## Make `setup.sh` executable and execute
 ```
-$ chmod +x setup.sh
-$ ./setup.sh
+chmod +x setup.sh
+./setup.sh
 ```
 ## Post install
 Vault Recovery keys and root token will be available in `~/unseal.keys`
